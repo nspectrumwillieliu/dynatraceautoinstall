@@ -38,6 +38,9 @@ ifecho;
 yum install java -y
 ifecho;
 #Install Dynatrace
+
+hostnamectl set-hostname dtserver
+
 wget https://files.dynatrace.com/downloads/OnPrem/dynaTrace/7.0/7.0.0.2469/dynatrace-full-7.0.0.2469-linux-x86-64.jar
 ifecho;
 cp dynatrace-full-7.0.0.2469-linux-x86-64.jar /opt
@@ -52,4 +55,9 @@ chkconfig dynaTraceServer on
 chkconfig dynaTraceCollector on
 chkconfig dynaTraceWebServerAgent on
 ifecho;
+firewall-cmd --permanent --add-port=6698-6699/tcp
+firewall-cmd --permanent --add-port=2021/tcp
+firewall-cmd --permanent --add-port=9911/tcp
+firewall-cmd --permanent --add-port=8020-8021/tcp
+firewall-cmd --reload
 reboot
