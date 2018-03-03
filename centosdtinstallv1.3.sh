@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum update
+yum  -y update
 #Install Java
 #echo $? 
 #echo -e  "Test Begin \n\n\n\n"
@@ -52,6 +52,6 @@ chkconfig dynaTraceServer on
 chkconfig dynaTraceCollector on
 chkconfig dynaTraceWebServerAgent on
 ifecho;
-
+reboot
 
 
