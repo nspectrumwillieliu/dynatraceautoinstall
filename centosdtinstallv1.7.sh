@@ -33,9 +33,9 @@ ifecho;
 #ifecho;
 #cp dynatrace-full-7.0.0.2469-linux-x86-64.jar /opt
 cd /opt
-java -jar dynatrace-full-6.5.0.1289-linux-x86-64.jar -y
+java -jar dynatrace-full-*.jar -y
 ifecho; 
-cd dynatrace-6.5/init.d
+cd dynatrace-*/init.d
 cp dynaTrace* /etc/init.d
 cd /etc/init.d
 chkconfig dynaTraceAnalysis on
