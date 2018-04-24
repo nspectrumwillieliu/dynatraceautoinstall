@@ -25,14 +25,16 @@ cd /opt
 ifecho;
 java -jar dynatrace-collector-*.jar
 ifecho;
-
+cd dynatrace-*/init.d/
+cp dynaTraceCollector /etc/init.d/
+chkconfig dynaTraceCollector on
 cd dynatrace-*/collector/conf
 #vi collector.config.xml
 val=`/usr/bin/cat /opt/dynatrace-*/collector/conf/collector.config.xml`
 #echo $val | awk -F'localhost' '$1'
-echo $val | sed 's/localhost/'$1'/g' > /opt/dynatrace-6.5/collector/conf/collector.config.xml
+echo $val | sed 's/localhost/'$1'/g' > /opt/dynatrace-*/collector/conf/collector.config.xml
 
-cd dynatrace-6.5/
+cd dynatrace-*/
 
 ./dtcollector -bg
 
